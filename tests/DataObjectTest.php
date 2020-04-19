@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace Test;
+namespace MjFox\Tests;
 
 use PHPUnit\Framework\TestCase;
-use MjFoxCore\DataObject;
+use MjFox\DataObject;
 
 class DataObjectTest extends TestCase
 {
     /**
-     * @var \MjFoxCore\DataObject|\MjFoxCore\DataObjectInterface
+     * @var \MjFox\DataObject|\MjFox\DataObjectInterface
      */
     private DataObject $dataObject;
 

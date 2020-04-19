@@ -4,8 +4,12 @@
   },
   "autoload": {
     "psr-4": {
-      "MjFoxCore\\": "src",
-      "MjFoxTest\\": "test"
+      "MjFox\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MjFox\\Tests\\": "tests/"
     }
   }
 }

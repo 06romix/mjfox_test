@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace MjFoxCore;
+namespace MjFox;
 
 /**
  * Provide magic methods for getters and setters
@@ -48,7 +48,7 @@ interface DataObjectInterface
 
     /**
      * @param null|string|array $key
-     * @return \MjFoxCore\DataObjectInterface
+     * @return \MjFox\DataObjectInterface
      */
     public function unsetData($key = ''): DataObjectInterface;
 }
