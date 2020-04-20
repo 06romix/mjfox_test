@@ -19,6 +19,11 @@ class DataObjectTest extends TestCase
         parent::setUp();
     }
 
+    public function testSimpleGetData(): void
+    {
+        $this->assertSame([], $this->dataObject->getData());
+    }
+
     public function testSimpleDataSetAndGet(): void
     {
         $this->dataObject->setData('a', 1);
@@ -51,6 +56,28 @@ class DataObjectTest extends TestCase
         $this->assertFalse($this->dataObject->hasData('a'));
         $this->dataObject->setData('a', null);
         $this->assertTrue($this->dataObject->hasData('a'));
+    }
+
+    public function testSimpleAddData(): void
+    {
+        $this->dataObject->addData(['a' => 1]);
+        $this->assertSame(['a' => 1], $this->dataObject->getData());
+    }
+
+    public function testAddDataToExists(): void
+    {
+        $this->dataObject->setData(['a' => 1]);
+        $this->dataObject->addData(['b' => 2]);
+        $this->assertSame(['a' => 1, 'b' => 2], $this->dataObject->getData());
+    }
+
+    public function testMultipleAddDataToExists(): void
+    {
+        $this->dataObject->setData(['a' => 1]);
+        $this->dataObject->addData(['b' => 2]);
+        $this->dataObject->addData(['c' => 3]);
+        $this->dataObject->addData(['b' => 4]);
+        $this->assertSame(['a' => 1, 'b' => 4, 'c' => 3], $this->dataObject->getData());
     }
 
     public function testSimpleSetAndGet(): void
