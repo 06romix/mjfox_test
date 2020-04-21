@@ -30,6 +30,16 @@ class DataObjectTest extends TestCase
         $this->assertSame(1, $this->dataObject->getData('a'));
     }
 
+    public function testSetDataToExists(): void
+    {
+        $this->dataObject->setData('a', 1);
+        $this->dataObject->setData(['b' => 1]);
+        $this->assertSame(['b' => 1], $this->dataObject->getData());
+
+        $this->dataObject->setData([]);
+        $this->assertSame([], $this->dataObject->getData());
+    }
+
     public function testMultipleDataSetAndGet(): void
     {
         $this->dataObject->setData('a', 1);
@@ -56,6 +66,13 @@ class DataObjectTest extends TestCase
         $this->assertFalse($this->dataObject->hasData('a'));
         $this->dataObject->setData('a', null);
         $this->assertTrue($this->dataObject->hasData('a'));
+    }
+
+    public function testHasDataObjectWithNull(): void
+    {
+        $this->assertFalse($this->dataObject->hasData());
+        $this->dataObject->setData('a', null);
+        $this->assertTrue($this->dataObject->hasData());
     }
 
     public function testSimpleAddData(): void

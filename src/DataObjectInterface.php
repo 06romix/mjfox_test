@@ -12,7 +12,7 @@ namespace MjFox;
 interface DataObjectInterface
 {
     /**
-     * Set data by key and override all data if key is array
+     * Set data by key or override all data if key is array
      *
      * @param string|array $key
      * @param mixed|null   $value
