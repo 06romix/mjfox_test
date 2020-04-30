@@ -47,19 +47,27 @@ class DataObject implements DataObjectInterface
 
     public function addData(array $array): DataObjectInterface
     {
-        // TODO: Implement addData() method.
+        foreach ($array as $key => $value) {
+            $this->setData($key, $value);
+        }
+        return $this;
     }
 
     public function hasData(string $key = ''): bool
     {
         if (empty($key) || !is_string($key)) {
-            return false;
+            return !empty($this->data);
         }
         return array_key_exists($key, $this->data);
     }
 
     public function unsetData($key = ''): DataObjectInterface
     {
-        // TODO: Implement unsetData() method.
+        if (empty($key)) {
+                $this->data = [];
+        } else {
+            unset($this->data[$key]);
+        }
+        return $this;
     }
 }
